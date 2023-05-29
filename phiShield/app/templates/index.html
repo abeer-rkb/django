@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PhiShield</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+  rel="stylesheet"
+/>
+  <!-- fontawesome -->
+  <link
+  rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous"/>
+ 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css'%}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+ 
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      
+   <a href="index.html" class="logo me-auto"><img src="{% static 'images/shield_search_find_business_logo__3_-removebg-preview.png'%}" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#home"> <i class="fas fa-home  m-lg-1"></i><span>Home</span></a></li>
+          <li><a class="nav-link scrollto" href="#about"><i class="fas fa-info-circle m-lg-1" ></i><span>About</span></a></li>
+    
+          <li><a class="nav-link scrollto" href="#faq"><i class="fas fa-question-circle m-lg-1" aria-hidden="true"></i>
+              <span>FAQ</span></a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Home Section ======= -->
+  <section id="home">
+    <div id="homeCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url({% static 'images/backgrd_auto_x2.jpg'%})">
+          <div class="url">
+            <h1>Phishing Website Detector</h1>
+            <div class="enter">
+                <form method="post" action= {% url 'classify_view' %}  />
+                 {% csrf_token %}
+                <div class="form-group">
+                  <input
+                    id="textbox"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter URL"
+                    name="url"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  Submit
+                </button>
+              </form>
+            </div>
+            
+          </div>
+          
+        </div>
+
+    </div>
+  </section><!-- End Home -->
+
+  <main id="main">
+
+  
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+        </div>
+
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= faq Section ======= -->
+    <section id="faq" class="contenu">
+   
+        <h2>Frequently Asked Questions</h2>
+        <details>
+            <summary>What is a phishing website ?</summary>
+            <div>
+                <p>A phishing website is a fraudulent website designed to trick users into providing sensitive information such as usernames, passwords, or financial details.</p>
+            </div>
+        </details>
+        <details>
+            <summary>How can I identify a phishing website?</summary>
+            <div>
+                <p>Look for signs of suspicious URLs, such as misspellings or variations of popular websites. Be cautious of requests for personal information. Check for secure connections (https://) and valid security certificates. </p>
+            </div>
+        </details>
+        <details>
+            <summary>How can I protect myself from phishing websites?</summary>
+            <div>
+                <p>Be careful when clicking on links in emails or messages, especially if they come from unknown sources. Avoid giving out personal or financial information on websites that appear suspicious. Keep your web browser and security software up to date to guard against known phishing techniques.</p>
+            </div>
+        </details>
+        <details>
+            <summary>What should I do if I come across a suspected phishing website?</summary>
+            <div>
+                <p>Do not engage with the website or submit any personal information. The browser window or tab should be closed right away. Report the website to the relevant authorities, such as the Anti-Phishing Working Group (APWG) or your web browser's phishing reporting tool.</p>
+            </div>
+        </details>
+        <details>
+            <summary>Is it possible to automatically recognize phishing attacks?</summary>
+            <div>
+                <p>Yes, with the use of phishing detection tools and algorithms, it is possible to automatically identify phishing websites based on various factors such as URL analysis, content analysis, and machine learning techniques.</p>
+            </div>
+        </details>
+    
+    
+    
+
+    </section><!-- End faq Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      
+      <div class="copyright">
+        &copy; Copyright <strong><span>PhiShield</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %} "></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js'%}"></script>
+
+</body>
+
+</html>
