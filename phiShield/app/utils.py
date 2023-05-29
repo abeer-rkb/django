@@ -162,9 +162,11 @@ def HTTPS_token(url):
         return -1
 
 def Request_URL(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+        except:
+         request = None
         try:
             if len(request.history) <= 1:
                 return -1
@@ -178,10 +180,13 @@ def Request_URL(url):
 
 
 def URL_of_Anchor(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             count = 0
             for i in soup.find_all('a'):
@@ -197,10 +202,13 @@ def URL_of_Anchor(url):
 
 
 def Links_in_tags(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             count = 0
             for i in soup.find_all('link'):
@@ -215,9 +223,13 @@ def Links_in_tags(url):
 
 
 def SFH(url):
-        request = requests.get(url, timeout=5, headers={"User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             if soup.find('form'):
                 return 1
@@ -228,10 +240,13 @@ def SFH(url):
 
 
 def Submitting_to_email(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             if soup.find('mailto:'):
                 return 1
@@ -244,6 +259,13 @@ def Submitting_to_email(url):
 
 def Abnormal_URL(url):
         try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
+        try:
             if re.findall(r'script|javascript|alert|onmouseover|onload|onerror|onclick|onmouse', url):
                 return 1
             else:
@@ -253,10 +275,13 @@ def Abnormal_URL(url):
 
 
 def Redirect(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             if soup.find('meta', attrs={'http-equiv': 'refresh'}):
                 return 1
@@ -269,6 +294,14 @@ def Redirect(url):
 
 def on_mouseover(url):
         try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
+
+        try:
             if re.findall(r"onmouseover", soup.text):
                 return 1
             else:
@@ -279,6 +312,15 @@ def on_mouseover(url):
 
 def RightClick(url):
         try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
+
+
+        try:
             if re.findall(r"contextmenu|event.button ?== ?2", soup.text):
                 return 1
             else:
@@ -288,10 +330,13 @@ def RightClick(url):
 
 
 def popUpWidnow(url):
-        request = requests.get(url, timeout=5, headers={
-                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36",
-                                        "Connection": "keep-alive"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+        try:
+         request = requests.get(url, timeout=5, headers={
+                                        "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
         try:
             if re.findall(r"alert\(|onMouseOver|window.open", soup.text):
                 return 1
@@ -302,9 +347,13 @@ def popUpWidnow(url):
 
 
 def Iframe(url):
-        request = requests.get(url, timeout=5, headers={
+        try:
+         request = requests.get(url, timeout=5, headers={
                                         "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"})
-        soup = BeautifulSoup(request.content, 'html.parser')
+         soup = BeautifulSoup(request.content, 'html.parser')
+        except:
+            request = None
+            soup = None
     
         try:
             if re.findall(r"[<iframe>|<frameBorder>]", soup.text):
