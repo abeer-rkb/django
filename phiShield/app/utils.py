@@ -435,7 +435,7 @@ def getInput(url):
 
   return (input)
 
-# load the model from disk
+# load the model from diskk
 
 filename1 = 'app/randomForestModel.pickle'
 model = pickle.load(open(filename1, 'rb'))
